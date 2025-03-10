@@ -2,10 +2,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -44,29 +47,31 @@ const Navbar = () => {
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-gray-800 hover:text-japanese-accent transition-colors">
-              Home
+              {t("home")}
             </Link>
             <a href="#about" className="text-gray-800 hover:text-japanese-accent transition-colors">
-              About
+              {t("about")}
             </a>
             <a href="#services" className="text-gray-800 hover:text-japanese-accent transition-colors">
-              Services
+              {t("services")}
             </a>
             <a href="#videos" className="text-gray-800 hover:text-japanese-accent transition-colors">
-              Videos
+              {t("videos")}
             </a>
             <a href="#contact" className="text-gray-800 hover:text-japanese-accent transition-colors">
-              Contact
+              {t("contact")}
             </a>
+            <LanguageToggle />
             <button className="btn-primary">
-              Start Learning
+              {t("startLearning")}
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageToggle />
             <button
               onClick={toggleMenu}
               className="text-gray-800 hover:text-japanese-accent focus:outline-none"
@@ -88,38 +93,38 @@ const Navbar = () => {
               className="text-gray-800 hover:text-japanese-accent transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Home
+              {t("home")}
             </Link>
             <a 
               href="#about" 
               className="text-gray-800 hover:text-japanese-accent transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              About
+              {t("about")}
             </a>
             <a 
               href="#services" 
               className="text-gray-800 hover:text-japanese-accent transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Services
+              {t("services")}
             </a>
             <a 
               href="#videos" 
               className="text-gray-800 hover:text-japanese-accent transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Videos
+              {t("videos")}
             </a>
             <a 
               href="#contact" 
               className="text-gray-800 hover:text-japanese-accent transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Contact
+              {t("contact")}
             </a>
             <button className="btn-primary w-full text-center">
-              Start Learning
+              {t("startLearning")}
             </button>
           </div>
         </div>
