@@ -43,24 +43,24 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#about" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#about" className="text-gray-300 hover:text-white transition-colors">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#services" className="text-gray-300 hover:text-white transition-colors">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#videos" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/videos" className="text-gray-300 hover:text-white transition-colors">
                   Videos
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#contact" className="text-gray-300 hover:text-white transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -69,29 +69,29 @@ const Footer = () => {
             <h3 className="text-lg font-medium mb-6 border-b border-gray-700 pb-2">Our Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#services" className="text-gray-300 hover:text-white transition-colors">
                   Study in Japan
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#services" className="text-gray-300 hover:text-white transition-colors">
                   Work Visa Support
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#services" className="text-gray-300 hover:text-white transition-colors">
                   Online Classes
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#services" className="text-gray-300 hover:text-white transition-colors">
                   Physical Classes
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                <Link to="/#services" className="text-gray-300 hover:text-white transition-colors">
                   Cultural Immersion
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -133,15 +133,15 @@ const Footer = () => {
             © {currentYear} 日本語Academy. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <Link to="/" className="text-gray-400 hover:text-white transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            </Link>
+            <Link to="/" className="text-gray-400 hover:text-white transition-colors">
               Terms of Service
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            </Link>
+            <Link to="/" className="text-gray-400 hover:text-white transition-colors">
               Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
