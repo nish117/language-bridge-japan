@@ -41,7 +41,7 @@ const Navbar = () => {
               className="flex items-center"
             >
               <span className="text-2xl font-jp-serif font-semibold bg-clip-text text-transparent bg-gradient-to-r from-japanese-navy to-japanese-accent">
-                日本語<span className="text-japanese-navy">Academy</span>
+                Sunmoon Nepal<span className="text-japanese-navy"> Educational Foundation</span>
               </span>
             </Link>
           </div>

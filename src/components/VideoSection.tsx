@@ -11,19 +11,19 @@ type Video = {
 
 const videos: Video[] = [
   {
-    id: "eBSCu2L-0fc",
+    id: "GUqFU5u7rLQ",
     title: "Basic Japanese Conversation Practice",
-    thumbnail: "https://img.youtube.com/vi/eBSCu2L-0fc/maxresdefault.jpg"
+    thumbnail: "https://i3.ytimg.com/vi/GUqFU5u7rLQ/maxresdefault.jpg"
   },
   {
-    id: "KJMcQYVcsmI",
+    id: "0e0duD8_LFE",
     title: "JLPT N5 Practice Test",
-    thumbnail: "https://img.youtube.com/vi/KJMcQYVcsmI/maxresdefault.jpg"
+    thumbnail: "https://i3.ytimg.com/vi/0e0duD8_LFE/maxresdefault.jpg"
   },
   {
-    id: "yuu2K2YCwUY",
+    id: "3cR2YYFCB9U",
     title: "Japanese Culture & Traditions",
-    thumbnail: "https://img.youtube.com/vi/yuu2K2YCwUY/maxresdefault.jpg"
+    thumbnail: "https://i3.ytimg.com/vi/3cR2YYFCB9U/maxresdefault.jpg"
   }
 ];
 
