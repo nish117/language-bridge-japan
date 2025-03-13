@@ -1,20 +1,23 @@
 
 import { GraduationCap, Globe, Users } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutUs = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="about" className="py-24 bg-japanese-light">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-slide-in">
             <div className="inline-block rounded-lg bg-japanese-accent/10 px-3 py-1 text-sm font-medium text-japanese-accent mb-2">
-              About Us
+              {t("about.tag")}
             </div>
             <h2 className="section-title">
-              Bridging Cultures Through Language Excellence
+              {t("about.title")}
             </h2>
             <p className="text-gray-600 text-lg">
-              At 日本語Academy, we're dedicated to providing exceptional Japanese language education and cultural immersion. Founded by experts with decades of experience, we guide students through their Japanese language journey with personalized approaches and authentic learning experiences.
+              {t("about.description")}
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
@@ -22,30 +25,30 @@ const AboutUs = () => {
                 <div className="p-3 rounded-full bg-japanese-accent/10 text-japanese-accent mb-3">
                   <GraduationCap size={24} />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Expert Teachers</h3>
-                <p className="text-gray-500 text-sm">Native Japanese speakers with teaching certification</p>
+                <h3 className="font-medium text-lg mb-1">{t("about.card1.title")}</h3>
+                <p className="text-gray-500 text-sm">{t("about.card1.description")}</p>
               </div>
               
               <div className="flex flex-col items-center text-center p-4 rounded-lg bg-white shadow-sm">
                 <div className="p-3 rounded-full bg-japanese-accent/10 text-japanese-accent mb-3">
                   <Globe size={24} />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Global Network</h3>
-                <p className="text-gray-500 text-sm">Connections with universities and companies in Japan</p>
+                <h3 className="font-medium text-lg mb-1">{t("about.card2.title")}</h3>
+                <p className="text-gray-500 text-sm">{t("about.card2.description")}</p>
               </div>
               
               <div className="flex flex-col items-center text-center p-4 rounded-lg bg-white shadow-sm">
                 <div className="p-3 rounded-full bg-japanese-accent/10 text-japanese-accent mb-3">
                   <Users size={24} />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Community</h3>
-                <p className="text-gray-500 text-sm">Join a thriving community of Japanese language enthusiasts</p>
+                <h3 className="font-medium text-lg mb-1">{t("about.card3.title")}</h3>
+                <p className="text-gray-500 text-sm">{t("about.card3.description")}</p>
               </div>
             </div>
             
             <div className="pt-4">
               <a href="#services" className="btn-primary">
-                Explore Our Services
+                {t("about.cta")}
               </a>
             </div>
           </div>

@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactMap = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,14 +42,13 @@ const ContactMap = () => {
       <div className="section-container">
         <div className="text-center max-w-2xl mx-auto mb-16 animate-slide-up">
           <div className="inline-block rounded-lg bg-japanese-accent/10 px-3 py-1 text-sm font-medium text-japanese-accent mb-2">
-            Get In Touch
+            {t("contact.tag")}
           </div>
           <h2 className="section-title text-center mx-auto after:mx-auto">
-            Contact Us
+            {t("contact.title")}
           </h2>
           <p className="text-gray-600 mt-4">
-            Have questions about our programs? Ready to start learning Japanese? 
-            Contact us today and our team will be happy to assist you.
+            {t("contact.description")}
           </p>
         </div>
 
@@ -56,7 +57,7 @@ const ContactMap = () => {
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
+                  {t("contact.form.name")}
                 </label>
                 <input
                   type="text"
@@ -66,14 +67,14 @@ const ContactMap = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-japanese-accent focus:border-transparent"
-                  placeholder="Your name"
+                  placeholder={t("contact.form.namePlaceholder")}
                 />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
+                    {t("contact.form.email")}
                   </label>
                   <input
                     type="email"
@@ -83,13 +84,13 @@ const ContactMap = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-japanese-accent focus:border-transparent"
-                    placeholder="your@email.com"
+                    placeholder={t("contact.form.emailPlaceholder")}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number
+                    {t("contact.form.phone")}
                   </label>
                   <input
                     type="tel"
@@ -98,14 +99,14 @@ const ContactMap = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-japanese-accent focus:border-transparent"
-                    placeholder="Your phone (optional)"
+                    placeholder={t("contact.form.phonePlaceholder")}
                   />
                 </div>
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
+                  {t("contact.form.message")}
                 </label>
                 <textarea
                   id="message"
@@ -115,7 +116,7 @@ const ContactMap = () => {
                   required
                   rows={4}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-japanese-accent focus:border-transparent resize-none"
-                  placeholder="How can we help you?"
+                  placeholder={t("contact.form.messagePlaceholder")}
                 ></textarea>
               </div>
               
@@ -123,7 +124,7 @@ const ContactMap = () => {
                 type="submit"
                 className="w-full btn-primary justify-center"
               >
-                Send Message <Send size={18} />
+                {t("contact.form.submit")} <Send size={18} />
               </button>
             </form>
           </div>
@@ -144,8 +145,8 @@ const ContactMap = () => {
             
             <div className="bg-white rounded-xl shadow-md p-6 space-y-6">
               <div>
-                <h3 className="text-lg font-medium mb-3">Contact Information</h3>
-                <p className="text-gray-600 mb-6">Reach out to us using any of the following methods:</p>
+                <h3 className="text-lg font-medium mb-3">{t("contact.info.title")}</h3>
+                <p className="text-gray-600 mb-6">{t("contact.info.description")}</p>
                 
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
@@ -153,7 +154,7 @@ const ContactMap = () => {
                       <Phone size={20} />
                     </div>
                     <div>
-                      <p className="font-medium">Phone</p>
+                      <p className="font-medium">{t("contact.info.phone")}</p>
                       <p className="text-gray-600">+81 03-1234-5678</p>
                     </div>
                   </div>
@@ -163,7 +164,7 @@ const ContactMap = () => {
                       <Mail size={20} />
                     </div>
                     <div>
-                      <p className="font-medium">Email</p>
+                      <p className="font-medium">{t("contact.info.email")}</p>
                       <p className="text-gray-600">info@japaneseacademy.com</p>
                     </div>
                   </div>
@@ -173,7 +174,7 @@ const ContactMap = () => {
                       <MapPin size={20} />
                     </div>
                     <div>
-                      <p className="font-medium">Address</p>
+                      <p className="font-medium">{t("contact.info.address")}</p>
                       <p className="text-gray-600">1-1 Marunouchi, Chiyoda City, Tokyo 100-0005, Japan</p>
                     </div>
                   </div>
@@ -181,14 +182,14 @@ const ContactMap = () => {
               </div>
               
               <div>
-                <h3 className="text-lg font-medium mb-3">Office Hours</h3>
+                <h3 className="text-lg font-medium mb-3">{t("contact.hours.title")}</h3>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <p className="font-medium">Weekdays</p>
+                    <p className="font-medium">{t("contact.hours.weekdays")}</p>
                     <p className="text-gray-600">9:00 AM - 6:00 PM</p>
                   </div>
                   <div>
-                    <p className="font-medium">Weekends</p>
+                    <p className="font-medium">{t("contact.hours.weekends")}</p>
                     <p className="text-gray-600">10:00 AM - 4:00 PM</p>
                   </div>
                 </div>
