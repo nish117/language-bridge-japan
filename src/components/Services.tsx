@@ -1,5 +1,6 @@
 
 import { GraduationCap, Briefcase, Video, Users } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type ServiceCardProps = {
   icon: React.ReactNode;
@@ -26,52 +27,53 @@ const ServiceCard = ({ icon, title, description, cta, delay }: ServiceCardProps)
 );
 
 const Services = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="services" className="py-24">
       <div className="section-container">
         <div className="text-center max-w-2xl mx-auto mb-16 animate-slide-up">
           <div className="inline-block rounded-lg bg-japanese-accent/10 px-3 py-1 text-sm font-medium text-japanese-accent mb-2">
-            Our Services
+            {t("services.tag")}
           </div>
           <h2 className="section-title text-center mx-auto after:mx-auto">
-            Comprehensive Japanese Language Solutions
+            {t("services.title")}
           </h2>
           <p className="text-gray-600 mt-4">
-            From personalized language instruction to study abroad programs, we offer a complete
-            suite of services to help you achieve your Japanese language goals.
+            {t("services.description")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <ServiceCard
             icon={<GraduationCap size={28} />}
-            title="Study in Japan"
-            description="Comprehensive support for university applications, language schools, and cultural immersion programs in Japan."
-            cta="Learn More"
+            title={t("services.card1.title")}
+            description={t("services.card1.description")}
+            cta={t("services.card1.cta")}
             delay={100}
           />
           
           <ServiceCard
             icon={<Briefcase size={28} />}
-            title="Work Visa Support"
-            description="Expert guidance for work visa applications, job placement assistance, and career counseling for Japan."
-            cta="Explore Opportunities"
+            title={t("services.card2.title")}
+            description={t("services.card2.description")}
+            cta={t("services.card2.cta")}
             delay={200}
           />
           
           <ServiceCard
             icon={<Video size={28} />}
-            title="Online Classes"
-            description="Flexible virtual Japanese lessons with certified instructors, interactive learning materials, and personalized feedback."
-            cta="View Schedule"
+            title={t("services.card3.title")}
+            description={t("services.card3.description")}
+            cta={t("services.card3.cta")}
             delay={300}
           />
           
           <ServiceCard
             icon={<Users size={28} />}
-            title="Physical Classes"
-            description="In-person Japanese language courses with immersive cultural activities and conversation practice."
-            cta="Find Locations"
+            title={t("services.card4.title")}
+            description={t("services.card4.description")}
+            cta={t("services.card4.cta")}
             delay={400}
           />
         </div>
@@ -80,14 +82,14 @@ const Services = () => {
           <div className="absolute inset-0 bg-gradient-radial from-japanese-accent/5 to-transparent"></div>
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex-1">
-              <h3 className="text-2xl font-medium mb-2">Ready to Begin Your Japanese Journey?</h3>
+              <h3 className="text-2xl font-medium mb-2">{t("services.banner.title")}</h3>
               <p className="text-gray-600">
-                Contact our team today to discuss your goals and find the perfect program for your needs.
+                {t("services.banner.description")}
               </p>
             </div>
             <div>
               <a href="#contact" className="btn-primary whitespace-nowrap">
-                Get Started
+                {t("services.banner.cta")}
               </a>
             </div>
           </div>

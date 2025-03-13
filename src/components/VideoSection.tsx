@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Play, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type Video = {
   id: string;
@@ -29,6 +30,7 @@ const videos: Video[] = [
 
 const VideoSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const openVideo = (videoId: string) => {
     setSelectedVideo(videoId);
@@ -43,13 +45,13 @@ const VideoSection = () => {
       <div className="section-container">
         <div className="text-center max-w-2xl mx-auto mb-16 animate-slide-up">
           <div className="inline-block rounded-lg bg-japanese-accent/10 px-3 py-1 text-sm font-medium text-japanese-accent mb-2">
-            Video Resources
+            {t("videos.tag")}
           </div>
           <h2 className="section-title text-center mx-auto after:mx-auto">
-            Learn Japanese Through Our Videos
+            {t("videos.title")}
           </h2>
           <p className="text-gray-600 mt-4">
-            Explore our library of Japanese language lessons, cultural insights, and student success stories.
+            {t("videos.description")}
           </p>
         </div>
 
@@ -77,7 +79,7 @@ const VideoSection = () => {
                   onClick={() => openVideo(video.id)}
                   className="text-japanese-accent hover:text-japanese-indigo font-medium flex items-center gap-1 transition-colors"
                 >
-                  Watch Now
+                  {t("videos.watchNow")}
                 </button>
               </div>
             </div>
@@ -86,7 +88,7 @@ const VideoSection = () => {
 
         <div className="mt-12 text-center">
           <Link to="/videos" className="btn-primary">
-            View More Videos <ArrowRight size={18} />
+            {t("videos.viewMore")} <ArrowRight size={18} />
           </Link>
         </div>
 
