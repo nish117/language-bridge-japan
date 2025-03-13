@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/language-bridge-japan",
+  base: "/language-bridge-japan/",
   server: {
     host: "::",
     port: 8080,
