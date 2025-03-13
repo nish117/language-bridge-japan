@@ -21,6 +21,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   });
   
   const [translations, setTranslations] = useState<Record<string, string>>({});
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     // Save language preference to localStorage when it changes
@@ -29,13 +30,28 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     // Load translations for the selected language
     const loadTranslations = async () => {
       try {
-        const translationModule = await import(`../translations/${language}.ts`);
+        // Using dynamic import with explicit file paths to ensure Vite properly bundles them
+        let translationModule;
+        
+        if (language === 'en') {
+          translationModule = await import('@/translations/en.ts');
+        } else if (language === 'ja') {
+          translationModule = await import('@/translations/ja.ts');
+        } else if (language === 'ne') {
+          translationModule = await import('@/translations/ne.ts');
+        } else {
+          // Fallback to English
+          translationModule = await import('@/translations/en.ts');
+        }
+        
         setTranslations(translationModule.default);
+        setLoaded(true);
       } catch (error) {
         console.error("Failed to load translations:", error);
         // Fallback to English if translation file is missing
-        const fallbackModule = await import("../translations/en.ts");
+        const fallbackModule = await import('@/translations/en.ts');
         setTranslations(fallbackModule.default);
+        setLoaded(true);
       }
     };
     
@@ -44,6 +60,10 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   
   // Translation function
   const t = (key: string): string => {
+    if (!loaded) {
+      return key; // Return key if translations haven't loaded yet
+    }
+    
     return translations[key] || key;
   };
 

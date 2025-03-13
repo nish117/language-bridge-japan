@@ -1,37 +1,58 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Define the slide type
 type Slide = {
   image: string;
-  title: string;
-  subtitle: string;
+  titleKey: string;
+  subtitleKey: string;
 };
 
-// Slide data
+// Slide data with translation keys instead of hardcoded text
 const slides: Slide[] = [
   {
     image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=2070&auto=format&fit=crop",
-    title: "Master the Japanese Language",
-    subtitle: "Comprehensive courses tailored to your goals"
+    titleKey: "hero.title1",
+    subtitleKey: "hero.subtitle1"
   },
   {
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop",
-    title: "Experience Japan",
-    subtitle: "Study and work opportunities in Japan"
+    titleKey: "hero.title2",
+    subtitleKey: "hero.subtitle2"
   },
   {
     image: "https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?q=80&w=2071&auto=format&fit=crop",
-    title: "Professional Guidance",
-    subtitle: "Expert support for visa applications and placement"
+    titleKey: "hero.title3",
+    subtitleKey: "hero.subtitle3"
   }
 ];
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isLoaded, setIsLoaded] = useState<boolean[]>(slides.map(() => false));
+  const [isLoaded, setIsLoaded] = useState<boolean[]>([false, false, false]);
   const [transitioning, setTransitioning] = useState(false);
+  const { t } = useLanguage();
+
+  // Preload images
+  useEffect(() => {
+    const preloadImages = () => {
+      slides.forEach((slide, index) => {
+        const img = new Image();
+        img.src = slide.image;
+        img.onload = () => {
+          setIsLoaded(prev => {
+            const newState = [...prev];
+            newState[index] = true;
+            return newState;
+          });
+        };
+      });
+    };
+    
+    preloadImages();
+  }, []);
 
   const goToSlide = useCallback((index: number) => {
     if (transitioning) return;
@@ -60,12 +81,6 @@ const HeroCarousel = () => {
     return () => clearInterval(interval);
   }, [nextSlide]);
 
-  const handleImageLoad = (index: number) => {
-    const newIsLoaded = [...isLoaded];
-    newIsLoaded[index] = true;
-    setIsLoaded(newIsLoaded);
-  };
-
   return (
     <div className="hero-carousel relative w-full h-screen overflow-hidden">
       {slides.map((slide, index) => (
@@ -86,11 +101,10 @@ const HeroCarousel = () => {
             
             <img
               src={slide.image}
-              alt={slide.title}
+              alt={t(slide.titleKey)}
               className={`w-full h-full object-cover object-center transition-opacity duration-500 ${
                 isLoaded[index] ? "opacity-100" : "opacity-0"
               }`}
-              onLoad={() => handleImageLoad(index)}
             />
           </div>
           
@@ -98,10 +112,10 @@ const HeroCarousel = () => {
           
           <div className="absolute inset-0 z-20 flex items-center justify-center">
             <div className="hero-content text-center text-white px-4 max-w-4xl animate-fade-in">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">{slide.title}</h1>
-              <p className="text-xl md:text-2xl mb-8">{slide.subtitle}</p>
+              <h1 className="text-4xl md:text-6xl font-bold mb-4">{t(slide.titleKey)}</h1>
+              <p className="text-xl md:text-2xl mb-8">{t(slide.subtitleKey)}</p>
               <button className="btn-primary">
-                Start Your Journey
+                {t('hero.cta')}
               </button>
             </div>
           </div>

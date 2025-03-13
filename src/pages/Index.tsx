@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const Index = () => {
-  // Load the language context to ensure translations are available
+  // Ensure the language context is used to trigger any necessary updates
   const { language } = useLanguage();
   const location = useLocation();
   
@@ -21,12 +21,14 @@ const Index = () => {
       const id = location.hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 300); // Small delay to ensure components have rendered
       }
     } else {
       window.scrollTo(0, 0);
     }
-  }, [location.hash]);
+  }, [location.hash, language]); // Also trigger on language change
   
   return (
     <div className="min-h-screen">
