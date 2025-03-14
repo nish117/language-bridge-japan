@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -14,7 +13,7 @@ const Footer = () => {
           <div>
             <div className="mb-4">
               <Link to="/" className="text-2xl font-jp-serif font-semibold">
-                日本語<span className="text-japanese-light">Academy</span>
+                Sunmoon Nepal<span className="text-japanese-light"> Educational Foundation</span>
               </Link>
             </div>
             <p className="text-gray-300 mb-6">
@@ -116,13 +115,13 @@ const Footer = () => {
             </div>
             <div>
               <h4 className="text-base font-medium mb-3">{t("footer.subscribe")}</h4>
-              <form className="flex gap-2">
+              <form className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   placeholder={t("footer.emailPlaceholder")}
                   className="flex-1 bg-white/10 border border-white/20 rounded-md px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-japanese-accent"
                 />
-                <button type="submit" className="bg-japanese-accent hover:bg-japanese-indigo px-4 py-2 rounded-md transition-colors">
+                <button type="submit" className="bg-japanese-accent hover:bg-japanese-indigo px-4 py-2 rounded-md transition-colors whitespace-nowrap">
                   {t("footer.subscribeButton")}
                 </button>
               </form>
@@ -132,7 +131,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © {currentYear} 日本語Academy. {t("footer.allRightsReserved")}
+            © {currentYear} Sunmoon Nepal Educational Foundation. {t("footer.allRightsReserved")}
           </p>
           <div className="flex gap-6 text-sm">
             <Link to="/" className="text-gray-400 hover:text-white transition-colors">

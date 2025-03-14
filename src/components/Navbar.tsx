@@ -62,7 +62,7 @@ const Navbar = () => {
               className="flex items-center"
             >
               <span className="text-2xl font-jp-serif font-semibold bg-clip-text text-transparent bg-gradient-to-r from-japanese-navy to-japanese-accent">
-                Sunmoon Nepal<span className="text-japanese-navy"> Educational Foundation</span>
+                Sunmoon Nepal<span className="text-japanese-navy"> Educational Foundation Pvt. Ltd.</span>
               </span>
             </Link>
           </div>
@@ -93,7 +93,11 @@ const Navbar = () => {
               {t("services")}
             </Link>
             <Link 
-              to="/videos" 
+              to="/#videos" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("videos");
+              }}
               className="text-gray-800 hover:text-japanese-accent transition-colors"
             >
               {t("videos")}
@@ -160,7 +164,11 @@ const Navbar = () => {
               {t("services")}
             </Link>
             <Link 
-              to="/videos" 
+              to="/#videos" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("videos");
+              }}
               className="text-gray-800 hover:text-japanese-accent transition-colors"
             >
               {t("videos")}

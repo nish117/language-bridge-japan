@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Play, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 type Video = {
@@ -31,6 +31,7 @@ const videos: Video[] = [
 const VideoSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const openVideo = (videoId: string) => {
     setSelectedVideo(videoId);
@@ -38,6 +39,10 @@ const VideoSection = () => {
 
   const closeVideo = () => {
     setSelectedVideo(null);
+  };
+
+  const goToVideoGallery = () => {
+    navigate('/videos');
   };
 
   return (
@@ -87,9 +92,12 @@ const VideoSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Link to="/videos" className="btn-primary">
+          <button 
+            onClick={goToVideoGallery}
+            className="btn-primary"
+          >
             {t("videos.viewMore")} <ArrowRight size={18} />
-          </Link>
+          </button>
         </div>
 
         {/* Video Modal */}
