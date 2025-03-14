@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -31,18 +32,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Function to handle smooth scrolling for anchor links on the home page
-  const scrollToSection = (sectionId: string) => {
-    // Only scroll if we're on the home page
+  // Function to handle navigation
+  const handleNavigation = (sectionId: string) => {
     if (location.pathname === "/") {
+      // If on home page, scroll to section
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // If we're not on the home page, navigate to the home page with the hash
-      // The hash routing will look like /#/#section instead of just /#section
-      // This is due to using HashRouter, but it will still work
+      // If on another page, navigate to home page with hash
+      navigate(`/#${sectionId}`);
     }
   };
 
@@ -75,46 +75,30 @@ const Navbar = () => {
             <Link to="/" className="text-gray-800 hover:text-japanese-accent transition-colors">
               {t("home")}
             </Link>
-            <Link 
-              to="/#about" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("about");
-              }}
+            <button 
+              onClick={() => handleNavigation("about")}
               className="text-gray-800 hover:text-japanese-accent transition-colors"
             >
               {t("about")}
-            </Link>
-            <Link 
-              to="/#services" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("services");
-              }}
+            </button>
+            <button 
+              onClick={() => handleNavigation("services")}
               className="text-gray-800 hover:text-japanese-accent transition-colors"
             >
               {t("services")}
-            </Link>
-            <Link 
-              to="/#videos" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("videos");
-              }}
+            </button>
+            <button 
+              onClick={() => handleNavigation("videos")}
               className="text-gray-800 hover:text-japanese-accent transition-colors"
             >
               {t("videos")}
-            </Link>
-            <Link 
-              to="/#contact" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("contact");
-              }}
+            </button>
+            <button 
+              onClick={() => handleNavigation("contact")}
               className="text-gray-800 hover:text-japanese-accent transition-colors"
             >
               {t("contact")}
-            </Link>
+            </button>
             <LanguageToggle />
             <button className="btn-primary whitespace-nowrap">
               {t("startLearning")}
@@ -146,46 +130,30 @@ const Navbar = () => {
             >
               {t("home")}
             </Link>
-            <Link 
-              to="/#about" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("about");
-              }}
-              className="text-gray-800 hover:text-japanese-accent transition-colors"
+            <button 
+              onClick={() => handleNavigation("about")}
+              className="text-gray-800 hover:text-japanese-accent transition-colors text-left"
             >
               {t("about")}
-            </Link>
-            <Link 
-              to="/#services" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("services");
-              }}
-              className="text-gray-800 hover:text-japanese-accent transition-colors"
+            </button>
+            <button 
+              onClick={() => handleNavigation("services")}
+              className="text-gray-800 hover:text-japanese-accent transition-colors text-left"
             >
               {t("services")}
-            </Link>
-            <Link 
-              to="/#videos" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("videos");
-              }}
-              className="text-gray-800 hover:text-japanese-accent transition-colors"
+            </button>
+            <button 
+              onClick={() => handleNavigation("videos")}
+              className="text-gray-800 hover:text-japanese-accent transition-colors text-left"
             >
               {t("videos")}
-            </Link>
-            <Link 
-              to="/#contact" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("contact");
-              }}
-              className="text-gray-800 hover:text-japanese-accent transition-colors"
+            </button>
+            <button 
+              onClick={() => handleNavigation("contact")}
+              className="text-gray-800 hover:text-japanese-accent transition-colors text-left"
             >
               {t("contact")}
-            </Link>
+            </button>
             <button className="btn-primary w-full text-center">
               {t("startLearning")}
             </button>
