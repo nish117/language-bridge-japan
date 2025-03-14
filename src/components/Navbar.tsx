@@ -59,16 +59,19 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link 
               to="/" 
-              className="flex items-center"
+              className="flex flex-col items-start"
             >
               <span className="text-2xl font-jp-serif font-semibold bg-clip-text text-transparent bg-gradient-to-r from-japanese-navy to-japanese-accent">
-                Sunmoon Nepal<span className="text-japanese-navy"> Educational Foundation Pvt. Ltd.</span>
+                Sunmoon Nepal
+              </span>
+              <span className="text-lg font-jp-serif text-japanese-navy leading-tight">
+                Educational Foundation Pvt. Ltd.
               </span>
             </Link>
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex md:flex-wrap items-center gap-4 lg:gap-6 justify-end">
             <Link to="/" className="text-gray-800 hover:text-japanese-accent transition-colors">
               {t("home")}
             </Link>
@@ -113,7 +116,7 @@ const Navbar = () => {
               {t("contact")}
             </Link>
             <LanguageToggle />
-            <button className="btn-primary">
+            <button className="btn-primary whitespace-nowrap">
               {t("startLearning")}
             </button>
           </div>

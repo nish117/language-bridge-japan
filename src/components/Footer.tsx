@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -7,13 +8,18 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-japanese-navy text-white">
+    <footer className="bg-japanese-navy text-white overflow-hidden w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <div className="mb-4">
-              <Link to="/" className="text-2xl font-jp-serif font-semibold">
-                Sunmoon Nepal<span className="text-japanese-light"> Educational Foundation</span>
+              <Link to="/" className="flex flex-col items-start">
+                <span className="text-2xl font-jp-serif font-semibold">
+                  Sunmoon Nepal
+                </span>
+                <span className="text-lg font-jp-serif text-japanese-light leading-tight">
+                  Educational Foundation
+                </span>
               </Link>
             </div>
             <p className="text-gray-300 mb-6">
@@ -113,9 +119,9 @@ const Footer = () => {
                 <Youtube size={20} />
               </a>
             </div>
-            <div>
+            <div className="w-full">
               <h4 className="text-base font-medium mb-3">{t("footer.subscribe")}</h4>
-              <form className="flex flex-col sm:flex-row gap-2">
+              <form className="flex flex-col sm:flex-row gap-2 max-w-full">
                 <input
                   type="email"
                   placeholder={t("footer.emailPlaceholder")}
